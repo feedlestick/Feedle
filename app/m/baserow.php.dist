@@ -1,0 +1,7 @@
+<?php
+namespace APP\M;
+
+class BaseRow extends LIB\TableRow
+{
+   
+}
