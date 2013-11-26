@@ -1,18 +1,13 @@
 <?php
 namespace LIB;
 
-//TODO : Pls work on me for ORACLE
 class Connexion {
 
     private static $_pdo;
 
     private function __construct() {
-        $dsn = 'mysql:dbname='
-                . BDD_NAME
-                . ';host='
-                . BDD_HOST;
-        self::$_pdo=new \PDO(
-                $dsn, BDD_USER, BDD_PWD, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+        $dsn = 'oci:dbname='.BDD_HOST.'/'.BDD_SERVICENAME.'';
+        self::$_pdo=new \PDO($dsn, BDD_USER, BDD_PWD);
     }
 
     static public function get() {

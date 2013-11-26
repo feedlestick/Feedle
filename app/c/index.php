@@ -1,8 +1,10 @@
 <?php
-namespace APP/C;
+namespace APP\C;
 
-class Accueil  extends LIB/Controleur
+class Index  extends \LIB\Controleur
 {
-  
+  public function index()
+  {
+  }
    
 }
