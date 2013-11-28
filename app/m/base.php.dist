@@ -1,8 +1,0 @@
-<?php
-namespace APP\M;
-
-class Base extends Table
-{
-    protected $_table='base';
-    protected $_tableRow='BaseRow';
-}

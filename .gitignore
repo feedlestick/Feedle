@@ -5,11 +5,11 @@
 /nbproject/private/
 
 
-#Ignore config for another instance execpt 'base'
-/config/
-!/config/base/
+#Ignore installs for another instance execpt 'base'
+/installs/
+!/installs/base/
 
 #Ignore web for another instance execpt 'base' and '_'
-/web/
-!/web/_
-!/web/base/
+/www/
+!/www/_
+!/www/base/
