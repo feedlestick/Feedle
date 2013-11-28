@@ -11,20 +11,13 @@ abstract class Table {
     
     private $_primaryKey = 'id';
 
-    protected function __construct($tableName, $modeleEnregistrement = '\MVC\TableRow') {
+    private function __construct($tableName, $modeleEnregistrement = '\MVC\TableRow') {
         $this->_tableName=$tableName;
         $this->_tableRow = $modeleEnregistrement;
     }
 
-    
-    /***********************
-     * 
-     * Commun a toutes les tables
-     * 
-     ************************/
-    
-    /**
-     * return an instance
+     /**
+     * return une instance en fonction du type de bdd
      * @return \MVC\Table
      */
     public static function getInstance($tableName, $tableRow) {
@@ -47,6 +40,13 @@ abstract class Table {
                 break;
         }
     }
+    
+    /***********************
+     * 
+     * Commun a toutes les base de données
+     * 
+     ************************/
+    
 
     protected function pdo() {
         if (!isset(self::$_pdo)) {
@@ -113,9 +113,7 @@ abstract class Table {
         return sizeof($result) > 0;
     }
     
-    abstract function newItem();
-
-    // TODO : Tableau asso
+    // TODO : Tableau associatif pour améliorer (execute)
     function where($where, $params) {
         $query = 'select * from ' . $this->_tableName . ' where ' . $where;
         $queryPrepare = $this->pdo()->prepare($query);
@@ -144,5 +142,8 @@ abstract class Table {
         $queryPrepare = $this->pdo()->prepare($query);
         return $queryPrepare->execute(array($id));
     }
-
+    
+    /************************** */
+    
+    abstract function newItem(); //OPTIMISABLE ?
 }

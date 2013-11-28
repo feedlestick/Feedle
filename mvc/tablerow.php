@@ -4,8 +4,36 @@ namespace MVC;
 
 class TableRow {
 
-    private $_table;
-
+    private $_table; //string
+    
+    /**
+     * Permet de retourner l'instance correcte nécéssaire pour chaque modèle
+     * @return \MVC\TableRowOracle|\MVC\TableRowMysql
+     * @throws Exception
+     */
+    public static function getInstance()
+    {
+        switch(\Install\App::BDD_TYPE)
+        {
+            case BddType::ORACLE: 
+                return new TableRowOracle();
+                break;
+            
+            case BddType::MYSQL: 
+                return new TableRowMysql();
+                break;
+            
+            case BddType::SQLSERVER:
+                throw new Exception('Not Yet Implented');
+                break;
+            
+            default:
+                throw new Exception('Invalid BDD Type');
+                break;
+        }
+    }
+    
+    //Destructeur
     public function __destruct() {
         $attributs = get_object_vars($this);
         $keys = array_keys($attributs);
@@ -14,10 +42,11 @@ class TableRow {
         }
     }
 
+    //Table de travaille
     public function setTable($table) {
        $this->_table = $table;
     }
-
+    
     /**
      * 
      * @param String $table
@@ -54,8 +83,6 @@ class TableRow {
                     . substr(str_repeat('?,', sizeof($attributs)), 0, -1) . ')';
         }
         $queryPrepare = $pdo->prepare($query);
-        
-        var_dump($attributs);
         
         if (!$queryPrepare->execute($values)) {
             $error = $queryPrepare->errorInfo();

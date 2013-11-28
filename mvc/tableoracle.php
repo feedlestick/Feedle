@@ -1,8 +1,12 @@
 <?php
 namespace MVC;
 
+/**
+ * Class TableOracle permet de gèrer les tables d'une BDD ORACLE
+ */
 class TableOracle extends Table {
     
+      /* Fonction newItem pour Oracle */
       public function newItem()
       {
         $item = new $this->_tableRow();
@@ -17,10 +21,8 @@ class TableOracle extends Table {
             $field = strtolower($col->$field_name);
             $item->$field = null;
         }
-        $item->id=null;
         
-        var_dump($item);
-
+        $item->id=null;
         return $item;      
       }
 }

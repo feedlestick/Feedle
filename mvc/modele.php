@@ -2,17 +2,22 @@
 
 namespace MVC;
 
+/**
+ * Modele est une class abstraite qui set d'interface entre Modele et Table
+ */
 abstract class Modele {
     
-    private $_table;
-    private static $_data = array();
+    private $_table; /* Instance de table générer */
+    private static $_data = array(); /* Une seule instance de modele autoriser */
      
-    private function __construct()
+    private function __construct() //Appeler uniquement par getInstance
     { 
         $this->_table = Table::getInstance($this->_tableName, $this->_tableRow);
     }
     
-    //Return
+    /*
+     * Retourne l'instance de Modele
+     */
     public static function getInstance()
     {
         $class = get_called_class();
@@ -22,9 +27,19 @@ abstract class Modele {
         return self::$_data[$class];
     }
     
+    /*
+     * Interface pour la fonction where de table
+     */
     public function where($where, $params) {
         $this->_table->where($where, $params); 
         
     }
-    public function newItem() { return $this->_table->newItem(); }
+
+    /*
+     * Interface pour la fonction newItem de table
+     */
+    public function newItem() { 
+        return $this->_table->newItem(); 
+        
+    }
 }
