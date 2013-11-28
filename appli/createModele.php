@@ -11,7 +11,7 @@ foreach ($argv as $nom) {
         $dataTable = '<?php
 namespace APPLI\M;
 
-class ' . ucfirst($nom) . ' extends \MVC\Table {
+class ' . ucfirst($nom) . ' extends \MVC\Modele {
     protected $_table=\'' . $nom . '\';
     protected $_tableRow=\'\\APPLI\\M\\' . ucfirst($nom) . 'Row\';
 
@@ -20,7 +20,7 @@ class ' . ucfirst($nom) . ' extends \MVC\Table {
 
 namespace APPLI\M;
 
-class '.ucfirst($nom).'Row extends \MVC\TableRow{
+class '.ucfirst($nom).'Row extends \MVC\ModeleRow{
 }';
         file_put_contents($fileTable, $dataTable);
         file_put_contents($fileTableRow, $dataTableRow);
