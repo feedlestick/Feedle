@@ -41,11 +41,6 @@
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     
                     <ul id="menu" class="nav navbar-nav side-nav">
-                        <img id="image" src="" width="100px">
-                        <div id="legend-player"></div>
-                        <audio controls id="player">
-                        </audio>
-                        <li><a href="#" onclick="ajax($('#page-content-left'),{c:'Podcast',a:'liste'})" >Liste</a></li>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right navbar-user">

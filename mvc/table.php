@@ -6,16 +6,25 @@ abstract class Table {
 
     protected $_tableRow='\\MVC\\TableRow';
     protected $_tableName;
-    
-    private static $_pdo;
-    
     private $_primaryKey = 'id';
+    private static $_pdo;
 
     private function __construct($tableName, $modeleEnregistrement = '\MVC\TableRow') {
         $this->_tableName=$tableName;
         $this->_tableRow = $modeleEnregistrement;
     }
 
+    
+    public function getTableName()
+    {
+        return $this->_tableName;
+    }
+    
+    public function getPrimaryKey()
+    {
+        return $this->_primaryKey;
+    }
+    
      /**
      * return une instance en fonction du type de bdd
      * @return \MVC\Table
@@ -59,17 +68,37 @@ abstract class Table {
         static $data = array();
 
         if (!isset($data[$this->_tableRow][$id]) or $reload) {
-            $query = 'select * from ' . $this->_tableName .
+            $query = 'select * from ' . $this->getTableName() .
                     ' where ' . $this->_primaryKey . ' = ?';
             $queryPrepare = $this->pdo()->prepare($query);
             $queryPrepare->execute(array($id));
-            $result = $queryPrepare->fetchAll(
-                    \PDO::FETCH_CLASS, $this->_tableRow
-            );
-            if (isset($result[0])) {
-                $result[0]->setTable($this->_tableName);
-                $data[$this->_tableRow][$id] = $result[0];
-            } else {
+            
+            $result = $queryPrepare->fetchAll(\PDO::FETCH_ASSOC);
+            $rows = array();
+            $nb_result = sizeof($result);
+
+            for($i=0; $i<$nb_result; $i++)
+            {
+                $row = $result[$i];
+                unset($result[$i]);
+                $row_object = new $this->_tableRow();
+                $row_object->setTable($this);
+
+                foreach ($row as $key => $value) 
+                {
+                    $key = strtolower($key);
+                    $row_object->$key = $value;
+                }
+
+                $rows[] = $row_object;
+            }
+            
+            if (isset($rows[0])) 
+            {
+                $data[$this->_tableRow][$id] = $rows[0];
+            } 
+            else 
+            {
                 $data[$this->_tableRow][$id] = null;
             }
         }
@@ -77,16 +106,30 @@ abstract class Table {
     }
     
      function getAll($order = null) {
-        $query = 'select * from ' . $this->_tableName;
+        $query = 'select * from ' . $this->getTableName();
         if (!is_null($order)) {
             $query.=' order by ' . $order;
+        } 
+        
+        $result = $this->pdo()->query($query)->fetchAll(\PDO::FETCH_ASSOC);
+        $rows = array();
+        $nb_result = sizeof($result);
+        
+        for($i=0; $i<$nb_result; $i++)
+        {
+            $row = $result[$i];
+            unset($result[$i]);
+            $row_object = new $this->_tableRow();
+            $row_object->setTable($this);
+            
+            foreach ($row as $key => $value) {
+                $key = strtolower($key);
+                $row_object->$key = $value;
+            }
+            
+            $rows[] = $row_object;
         }
-        $rows=$this->pdo()->query($query)->fetchAll(
-                        \PDO::FETCH_CLASS, $this->_tableRow
-        );
-        foreach ($rows as $row) {
-            $row->setTable($this->_tableName);
-        }
+        
         return $rows;
     }
     
@@ -103,28 +146,41 @@ abstract class Table {
     }
     
     function exists($id) {
-        $query = 'select * from ' . $this->_tableName .
+        $query = 'select * from ' . $this->getTableName() .
                 ' where ' . $this->_primaryKey . ' = ?';
         $queryPrepare = $this->pdo()->prepare($query);
         $queryPrepare->execute(array($id));
-        $result = $queryPrepare->fetchAll(
-                \PDO::FETCH_CLASS, $this->_tableRow
-        );
+        $result = $queryPrepare->fetchAll();
         return sizeof($result) > 0;
     }
     
     // TODO : Tableau associatif pour améliorer (execute)
-    function where($where, $params) {
-        $query = 'select * from ' . $this->_tableName . ' where ' . $where;
+    public function where($where, $params) {
+        $query = 'select * from ' . $this->getTableName() . ' where ' . $where;
+        
         $queryPrepare = $this->pdo()->prepare($query);
         $queryPrepare->execute($params);
-        $result = $queryPrepare->fetchAll(
-                \PDO::FETCH_CLASS, $this->_tableRow
-        );
-        foreach ($result as $o) {
-            $o->setTable($this->_tableName);
+
+        $result = $queryPrepare->fetchAll(\PDO::FETCH_ASSOC);
+        $rows = array();
+        $nb_result = sizeof($result);
+        
+        for($i=0; $i<$nb_result; $i++)
+        {
+            $row = $result[$i];
+            unset($result[$i]);
+            $row_object = new $this->_tableRow();
+            $row_object->setTable($this);
+            
+            foreach ($row as $key => $value) {
+                $key = strtolower($key);
+                $row_object->$key = $value;
+            }
+            
+            $rows[] = $row_object;
         }
-        return $result;
+        
+        return $rows;
     }
 
     function whereFirst($where, $params) {
@@ -137,7 +193,7 @@ abstract class Table {
     }
 
     function delete($id) {
-        $query = 'delete from ' . $this->_tableName .
+        $query = 'delete from ' . $this->getTableName() .
                 ' where ' . $this->_primaryKey . ' = ?';
         $queryPrepare = $this->pdo()->prepare($query);
         return $queryPrepare->execute(array($id));

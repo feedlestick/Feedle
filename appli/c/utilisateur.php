@@ -10,13 +10,19 @@ class Utilisateur extends \MVC\Controleur{
     static function verifIdentification($params){
         if(isset($_SESSION['utilisateur']) and $_SESSION['utilisateur']){
             self::redirect('Utilisateur', 'tableauDeBord');
-        }else{
+        }
+        else
+        {
             $utilisateur=  \APPLI\M\Utilisateur::getInstance()->verifIdentification($params['email'],$params['password']);
-            if($utilisateur){
+
+            if($utilisateur)
+            {
                 $_SESSION['utilisateur']=  serialize($utilisateur);
                 \Install\App::$utilisateur=  $utilisateur;
-                //self::redirect('Utilisateur', 'tableauDeBord');
-            }else{
+                self::redirect('Utilisateur', 'tableauDeBord');
+            }
+            else
+            {
                 $_SESSION['messages']['danger'][]='Erreur lors de l\'identification';
                 self::redirect('Utilisateur', 'identification');
             }

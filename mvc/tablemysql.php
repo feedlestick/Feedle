@@ -6,9 +6,9 @@ class TableMysql extends Table {
       public function newItem()
       {
         $item = new $this->_tableRow();
-        $item->setTable($this->_tableName);
+        $item->setTable($this);
         
-        $query = 'show columns '.strtoupper($this->_tableName);
+        $query = 'show columns '.strtoupper($this->getTableName());
         $field_name = 'Field';
             
         $colonnes = $this->pdo()->query($query)->fetchAll(\PDO::FETCH_CLASS);

@@ -9,12 +9,27 @@ class ModeleRow {
     
     private $_tablerow;
   
-    //Tout les paramètres non définis sont a définir sur la _tablerow et non sur modeleRow
+    /**
+     * Tout les paramètres non définis sont a définir sur la _tablerow et non sur modeleRow
+     * @param type $name
+     * @param type $value
+     */
     public function __set ($name, $value)
     {
+        if(!$this->_tablerow)
+        {
+             $this->_tablerow = TableRow::getInstance();
+        }
+
         $this->_tablerow->$name = $value;
     }
-  
+    
+    
+    public function __get($name)
+    {
+        return $this->_tablerow->$name;
+    }
+            
     /**
      * Le constructeur sert en réalité a créez la tablerow
      */

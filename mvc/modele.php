@@ -31,8 +31,7 @@ abstract class Modele {
      * Interface pour la fonction where de table
      */
     public function where($where, $params) {
-        $this->_table->where($where, $params); 
-        
+        return $this->_table->where($where, $params);
     }
 
     /*
