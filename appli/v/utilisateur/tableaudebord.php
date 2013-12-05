@@ -34,13 +34,17 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="."><?php echo Install\App::NAME; ?></a>
+                    <a class="navbar-brand" href="#" onclick="ajax($('#page-wrapper'),{c:'Utilisateur',a:'accueil'})"><?php echo Install\App::NAME; ?></a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     
                     <ul id="menu" class="nav navbar-nav side-nav">
+                        <li><a href="#" onclick="ajax($('#page-wrapper'),{c:'Utilisateur',a:'accueil'})"><i class="fa fa-dashboard"></i> Accueil</a></li>
+                        <li><a href="#" onclick="ajax($('#page-wrapper'),{c:'Produit',a:'liste'})"><i class="fa fa-table"></i> Liste des produits</a></li>
+                        <li><a href="#" onclick="ajax($('#page-wrapper'),{c:'Produit',a:'mouvement'})"><i class="fa fa-truck Mouvement"></i> Mouvement</a></li>
+                        <li><a href="#" onclick="ajax($('#page-wrapper'),{c:'Produit',a:'statistique'})"><i class="fa fa-bar-chart-o"></i> Statistique</a></li>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right navbar-user">
@@ -57,10 +61,6 @@
             </nav>
 
             <div id="page-wrapper">
-                <div id="page-content-left" class="col-lg-3">
-                </div>
-                <div id="page-content-right" class="col-lg-3">
-                </div>
             </div><!-- /#page-wrapper -->
 
         </div><!-- /#wrapper -->
@@ -79,7 +79,6 @@
         
         <script>
             $(document).ready(function() {
-                
             });
         </script>
     </body>
