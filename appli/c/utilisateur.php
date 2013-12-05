@@ -30,7 +30,6 @@ class Utilisateur extends \MVC\Controleur{
     }
     
     static function tableauDeBord(){}
-    static function accueil(){}
     
     static function logout(){
         unset($_SESSION['utilisateur']);
