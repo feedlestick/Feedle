@@ -41,6 +41,7 @@
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     
                     <ul id="menu" class="nav navbar-nav side-nav">
+                        <li><a href="."><i class="fa fa-dashboard"></i> Tableau de bord</a></li>
                         <li><a href="#" onclick="ajax($('#page-wrapper'),{c:'Produit',a:'liste'})"><i class="fa fa-table"></i> Liste des produits</a></li>
                         <li><a href="#" onclick="ajax($('#page-wrapper'),{c:'Produit',a:'mouvement'})"><i class="fa fa-truck Mouvement"></i> Mouvement</a></li>
                         <li><a href="#" onclick="ajax($('#page-wrapper'),{c:'Produit',a:'statistique'})"><i class="fa fa-bar-chart-o"></i> Statistique</a></li>
