@@ -105,6 +105,7 @@ abstract class Table {
         return $data[$this->_tableRow][$id];
     }
     
+    
      function getAll($order = null) {
         $query = 'select * from ' . $this->getTableName();
         if (!is_null($order)) {
@@ -129,7 +130,6 @@ abstract class Table {
             
             $rows[] = $row_object;
         }
-        
         return $rows;
     }
     

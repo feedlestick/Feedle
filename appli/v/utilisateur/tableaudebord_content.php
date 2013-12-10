@@ -17,7 +17,7 @@
                             <tr>
                                 <th class="header">Produit <i class="fa fa-sort"></i></th>
                                 <th class="header">Type <i class="fa fa-sort"></i></th>
-                                <th class="header">Commantaire <i class="fa fa-sort"></i></th>
+                                <th class="header">Commentaire <i class="fa fa-sort"></i></th>
                             </tr>
                         </thread>
                         <tbody>

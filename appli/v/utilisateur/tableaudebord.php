@@ -14,7 +14,6 @@
         <!-- Add custom CSS here -->
         <link href="<?php echo Install\Chemins::CSS; ?>sb-admin.css" rel="stylesheet">
         <link rel="stylesheet" href="<?php echo Install\Chemins::FONT; ?>css/font-awesome.min.css">
-        <link rel="stylesheet" href="<?php echo Install\Chemins::CSS; ?>perso.css">
         <!-- Page Specific CSS -->
         <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
         <!-- editArea editor -->
@@ -34,17 +33,17 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="."><?php echo Install\App::NAME; ?></a>
+                    <a class="navbar-brand" href="#" onclick="ajax($('#page-content'),{c:'Utilisateur',a:'tableaudebord_content'})"><?php echo Install\App::NAME; ?></a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     
                     <ul id="menu" class="nav navbar-nav side-nav">
-                        <li><a href="."><i class="fa fa-dashboard"></i> Tableau de bord</a></li>
-                        <li><a href="#" onclick="ajax($('#page-wrapper'),{c:'Produit',a:'liste'})"><i class="fa fa-table"></i> Liste des produits</a></li>
-                        <li><a href="#" onclick="ajax($('#page-wrapper'),{c:'Produit',a:'mouvement'})"><i class="fa fa-truck Mouvement"></i> Mouvement</a></li>
-                        <li><a href="#" onclick="ajax($('#page-wrapper'),{c:'Produit',a:'statistique'})"><i class="fa fa-bar-chart-o"></i> Statistique</a></li>
+                        <li><a href="#" onclick="ajax($('#page-content'),{c:'Utilisateur',a:'tableaudebord_content'})"><i class="fa fa-dashboard"></i> Tableau de bord</a></li>
+                        <li><a href="#" onclick="ajax($('#page-content'),{c:'Produit',a:'liste'})"><i class="fa fa-table"></i> Liste des produits</a></li>
+                        <li><a href="#" onclick="ajax($('#page-content'),{c:'Produit',a:'mouvement'})"><i class="fa fa-truck Mouvement"></i> Mouvement</a></li>
+                        <li><a href="#" onclick="ajax($('#page-content'),{c:'Produit',a:'statistique'})"><i class="fa fa-bar-chart-o"></i> Statistique</a></li>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right navbar-user">
@@ -59,9 +58,10 @@
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </nav>
-
+            
             <div id="page-wrapper">
-                <?php include('tableaudebord_content.php');?>
+                <div id="page-localstorage"></div>
+                <div id="page-content"></div>
             </div>
 
         </div><!-- /#wrapper -->
@@ -72,12 +72,10 @@
         <!-- Page Specific Plugins -->
         <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
         <script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
-        <script src="<?php echo Install\Chemins::JS; ?>morris/chart-data-morris.js"></script>
         <script src="<?php echo Install\Chemins::JS; ?>tablesorter/jquery.tablesorter.js"></script>
         <script src="<?php echo Install\Chemins::JS; ?>tablesorter/tables.js"></script>
+        <script src="<?php echo Install\Chemins::JS; ?>localStorageHelper.js"></script>
         <script src="<?php echo Install\Chemins::JS; ?>perso.js"></script>
-        <script src="<?php echo Install\Chemins::JS; ?>ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-        
         <script>
             $(document).ready(function() {
             });

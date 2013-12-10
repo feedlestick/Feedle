@@ -5,7 +5,8 @@ class Produit extends \MVC\Controleur{
     
     static function liste() 
     {
-        //self::getVue()->liste=array("TEST1", "TEST2");
+        $produits = \APPLI\M\Produit::getInstance()->getAll();
+        self::getVue()->liste=$produits;
     }
     
     static function mouvement()

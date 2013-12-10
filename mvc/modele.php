@@ -41,4 +41,12 @@ abstract class Modele {
         return $this->_table->newItem(); 
         
     }
+    
+    /*
+     * Retourne toute les données d'une table
+     */
+    public function getAll($order = null)
+    {
+        return $this->_table->getAll($order);
+    }
 }

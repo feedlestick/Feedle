@@ -5,7 +5,7 @@ namespace MVC;
 /*
  * ModeleRow est une interface pour les modèles pour générer les tablerow
  */
-class ModeleRow {
+class ModeleRow implements \JsonSerializable {
     
     private $_tablerow;
   
@@ -29,7 +29,7 @@ class ModeleRow {
     {
         return $this->_tablerow->$name;
     }
-            
+     
     /**
      * Le constructeur sert en réalité a créez la tablerow
      */
@@ -57,4 +57,9 @@ class ModeleRow {
     { 
         $this->_tablerow->store($table, $pdo); 
     }
+
+    public function jsonSerialize() {
+        return $this->_tablerow;
+    }
+
 }

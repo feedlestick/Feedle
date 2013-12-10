@@ -3,13 +3,3 @@
 
 #Ignore netbeans configuration
 /nbproject/private/
-
-
-#Ignore installs for another instance execpt 'base'
-/installs/
-!/installs/base/
-
-#Ignore web for another instance execpt 'base' and '_'
-/www/
-!/www/_
-!/www/base/
