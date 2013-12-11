@@ -57,7 +57,7 @@ abstract class Table {
      ************************/
     
 
-    protected function pdo() {
+    public function pdo() {
         if (!isset(self::$_pdo)) {
             self::$_pdo = Connexion::get();
         }
@@ -105,13 +105,9 @@ abstract class Table {
         return $data[$this->_tableRow][$id];
     }
     
-    
-     function getAll($order = null) {
-        $query = 'select * from ' . $this->getTableName();
-        if (!is_null($order)) {
-            $query.=' order by ' . $order;
-        } 
-        
+     function getAll($order = null, $limit = array()) 
+     {
+        $query = $this->getAllQuery($order, $limit);
         $result = $this->pdo()->query($query)->fetchAll(\PDO::FETCH_ASSOC);
         $rows = array();
         $nb_result = sizeof($result);
@@ -154,6 +150,16 @@ abstract class Table {
         return sizeof($result) > 0;
     }
     
+    function countRows()
+    {
+        $query = 'select count(?) from ' . $this->getTableName();
+        $queryPrepare = $this->pdo()->prepare($query);
+        $queryPrepare->execute(array($this->_primaryKey));
+        $result = $queryPrepare->fetchAll();
+        
+        return $result[0][0];
+    }
+
     // TODO : Tableau associatif pour améliorer (execute)
     public function where($where, $params) {
         $query = 'select * from ' . $this->getTableName() . ' where ' . $where;
@@ -202,4 +208,7 @@ abstract class Table {
     /************************** */
     
     abstract function newItem(); //OPTIMISABLE ?
+    
+    //Retourne la requete du getAll
+    abstract function getAllQuery($order = null, $limit = array());
 }

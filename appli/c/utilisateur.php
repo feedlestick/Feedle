@@ -2,6 +2,22 @@
 namespace APPLI\C;
 
 class Utilisateur extends \MVC\Controleur{
+     
+    static function tableauDeBord(){}
+    
+    static function tableauDeBord_Content(){
+        self::getVue()->username = \Install\App::$utilisateur->email;
+        self::getVue()->produit_in_db = \APPLI\M\Produit::getInstance()->countRows();
+        self::getVue()->produit_stock = \APPLI\M\Produit::getInstance()->getNbProduitEnStock();
+    }
+    
+    static function data_tableaudebord_mouvements()
+    {
+        //self::getVue()->mouvement_liste = \APPLI\M\Mouvement::getInstance()->getMouvementsBetween("date_mvt", 0, 10);
+    }
+    
+    /* COMPTE */
+    
     static function identification(){
         if(isset($_SESSION['utilisateur']) and $_SESSION['utilisateur']){
             self::redirect('Utilisateur', 'tableauDeBord');
@@ -29,20 +45,20 @@ class Utilisateur extends \MVC\Controleur{
         }
     }
     
-    static function tableauDeBord(){}
-    static function tableauDeBord_Content(){}
-    
+
     static function logout(){
         unset($_SESSION['utilisateur']);
         session_destroy();
         self::redirect('Utilisateur', 'identification');
     }
+    
     static function menu(){
         self::getVue()->series= \Install\App::$utilisateur->series();
     }
+    
     static function creerCompte(){
-        
     }
+    
     static function creerCompteConfirm($params){
         $emailExistant=\APPLI\M\Utilisateur::getInstance()->where('email=?',array($params['email']));
         if(sizeof($emailExistant)>0){

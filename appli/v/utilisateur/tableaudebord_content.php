@@ -11,21 +11,29 @@
                 <h3 class="panel-title"><i class="fa fa-money"></i> Dernier mouvements</h3>
             </div>
             <div class="panel-body">
-              <div class="table-responsive">
+            <div id="loader_mouvement">
+                <h4>Chargement ...</h4>
+                <div class="progress progress-striped active">
+                    <div class="progress-bar progress-bar-success" style="width: 100%"></div>
+                </div>
+            </div>
+              <div class="table table-responsive" id="data_mouvement">
                    <table class="table table-bordered table-hover table-striped tablesorter">
                         <thead>
                             <tr>
-                                <th class="header">Produit <i class="fa fa-sort"></i></th>
+                                <th class="header">Date <i class="fa fa-sort"></i></th>
                                 <th class="header">Type <i class="fa fa-sort"></i></th>
+                                <th class="header">Produit <i class="fa fa-sort"></i></th>
+                                <th class="header">Quantité <i class="fa fa-sort"></i></th>
                                 <th class="header">Commentaire <i class="fa fa-sort"></i></th>
                             </tr>
                         </thread>
-                        <tbody>
-                            <tr>
+                        <tbody id="table_rows_mouvements">
+                            <!-- <tr>
                                 <td>1</td>
                                 <td>1</td>
                                 <td>1</td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                 </div>
@@ -46,11 +54,15 @@
             </div>
             <div class="panel-body">
                 <div class="list-group">
-                    <a class="list-group-item" href="#"><i class="fa fa-user"></i> Bienvenue #utilisateur</a>
-                    <a class="list-group-item" href="#"><i class="fa fa-truck"></i> ## produits enregistrés</a>
-                    <a class="list-group-item" href="#"><i class="fa fa-truck"></i> ## produits en stock</a>
+                    <a class="list-group-item" href="#"><i class="fa fa-user"></i> Bienvenue <?php echo $this->username ?></a>
+                    <a class="list-group-item" href="#"><i class="fa fa-truck"></i> <?php echo $this->produit_in_db; ?> produits enregistrés</a>
+                    <a class="list-group-item" href="#"><i class="fa fa-truck"></i> <?php echo $this->produit_stock; ?>  produits en stock</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    ajax($('#table_rows_mouvements'),{c:'Utilisateur',a:'data_tableaudebord_mouvements'}, true, true);
+</script>

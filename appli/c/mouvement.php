@@ -1,7 +1,7 @@
 <?php
 namespace APPLI\C;
 
-class Produit extends \MVC\Controleur{
+class Mouvement extends \MVC\Controleur{
 
     static function liste() 
     {  
@@ -9,11 +9,16 @@ class Produit extends \MVC\Controleur{
     
     static function data_liste()
     {
-        $produits = \APPLI\M\Produit::getAllProduit();
-        self::getVue()->liste=$produits;
+        $mouvements = \APPLI\M\Mouvement::getInstance()->getAllMouvements();
+       
+        self::getVue()->liste=$mouvements;
         self::getVue()->page= \MVC\A::post('p', 1);
     }
-    
+
+    static function mouvement()
+    {
+        
+    }
     
     static function statistique()
     {

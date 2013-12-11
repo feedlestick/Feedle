@@ -15,13 +15,23 @@ abstract class Modele {
         $this->_table = Table::getInstance($this->_tableName, $this->_tableRow);
     }
     
+    public function getTableName()
+    {
+        return $this->_table->getTableName();
+    }
+    
+    protected function pdo()
+    {
+        return $this->_table->pdo();
+    }
+    
     /*
      * Retourne l'instance de Modele
      */
     public static function getInstance()
     {
         $class = get_called_class();
-        if (!isset(self::$_data[$class])) {
+        if (!isset(self::$_data[$class])){
             self::$_data[$class] = new $class();
         }
         return self::$_data[$class];
@@ -43,10 +53,17 @@ abstract class Modele {
     }
     
     /*
+     * Interface pour la fonction countRows de table
+     */
+    public function countRows(){
+        return $this->_table->countRows();
+    }
+    
+    /*
      * Retourne toute les données d'une table
      */
-    public function getAll($order = null)
+    public function getAll($order = null, $limit = array())
     {
-        return $this->_table->getAll($order);
+        return $this->_table->getAll($order, $limit);
     }
 }

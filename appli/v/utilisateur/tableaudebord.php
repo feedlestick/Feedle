@@ -33,17 +33,17 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#" onclick="ajax($('#page-content'),{c:'Utilisateur',a:'tableaudebord_content'})"><?php echo Install\App::NAME; ?></a>
+                    <a class="navbar-brand" href="#" onclick="ajax($('#page-content'),{c:'Utilisateur',a:'tableaudebord_content'}, true, true)"><?php echo Install\App::NAME; ?></a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     
                     <ul id="menu" class="nav navbar-nav side-nav">
-                        <li><a href="#" onclick="ajax($('#page-content'),{c:'Utilisateur',a:'tableaudebord_content'})"><i class="fa fa-dashboard"></i> Tableau de bord</a></li>
-                        <li><a href="#" onclick="ajax($('#page-content'),{c:'Produit',a:'liste'})"><i class="fa fa-table"></i> Liste des produits</a></li>
-                        <li><a href="#" onclick="ajax($('#page-content'),{c:'Produit',a:'mouvement'})"><i class="fa fa-truck Mouvement"></i> Mouvement</a></li>
-                        <li><a href="#" onclick="ajax($('#page-content'),{c:'Produit',a:'statistique'})"><i class="fa fa-bar-chart-o"></i> Statistique</a></li>
+                        <li><a href="#" onclick="ajax($('#page-content'),{c:'Utilisateur',a:'tableaudebord_content'}, true, true)"><i class="fa fa-dashboard"></i> Tableau de bord</a></li>
+                        <li><a href="#" onclick="ajax($('#page-content'),{c:'Produit',a:'liste'}, true, true)"><i class="fa fa-table"></i> Liste des produits</a></li>
+                        <li><a href="#" onclick="ajax($('#page-content'),{c:'Mouvement',a:'liste'}, true, true)"><i class="fa fa-truck Mouvement"></i> Mouvement</a></li>
+                        <li><a href="#" onclick="ajax($('#page-content'),{c:'Produit',a:'statistique'}, true, true)"><i class="fa fa-bar-chart-o"></i> Statistique</a></li>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right navbar-user">

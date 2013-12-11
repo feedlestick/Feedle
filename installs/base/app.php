@@ -11,4 +11,5 @@ class App{
     
     const SALT_BEFORE='sdfj 5(-q*/DA';
     const SALT_AFTER='rccà9_6}Hé';
+   
 }
