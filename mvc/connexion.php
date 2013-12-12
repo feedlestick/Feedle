@@ -11,7 +11,7 @@ class Connexion {
 	{
             //oracle pdo
             case \MVC\BddType::ORACLE:
-                $dsn = 'oci:dbname='.  \Install\Bdd_ORACLE::HOST.'/'.  \Install\Bdd_ORACLE::SERVICENAME.'';
+                $dsn = 'oci:dbname='.  \Install\Bdd_ORACLE::HOST.'/'.  \Install\Bdd_ORACLE::SERVICENAME.';charset=UTF8';
                 self::$_pdo=new \PDO($dsn, \Install\Bdd_ORACLE::USER, \Install\Bdd_ORACLE::PWD);
             break;
 
