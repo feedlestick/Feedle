@@ -21,4 +21,19 @@ class TableMysql extends Table {
         $item->id=null;
         return $item;      
       }
+      
+     public function getAllQuery($order = null, $limit = array()) 
+     {
+        $query = 'select * from ' . $this->getTableName();
+
+        if (!is_null($order)) {
+            $query.=' order by ' . $order;
+        }
+        
+        if (sizeof($limit) == 2) {
+            $query.= ' LIMIT ' . $limit[0] . ',' . $limit[1];
+        }
+        
+        return $query;
+     }
 }

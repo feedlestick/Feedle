@@ -91,7 +91,4 @@
            ajax($('#table_rows'),{c:'Mouvement',a:'data_liste', p:page}, false, true);
         }
     });
-    
-
-  
 </script>

@@ -1,8 +1,9 @@
 <script type="text/javascript">
+    // ======= infinite scroll ==========
     var liste = <?php echo json_encode($this->liste); ?>;
     var curr_page = <?php echo $this->page; ?>;
     
-    var item_per_page = 50;
+    var item_per_page = 50; //Nombre d'élement par page
     var start_id = (curr_page-1) * item_per_page;
     var last_id = (curr_page*item_per_page > liste.length) ? liste.length : curr_page*item_per_page;
 

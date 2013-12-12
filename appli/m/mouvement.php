@@ -14,7 +14,6 @@ class Mouvement extends \MVC\Modele {
            $result[$i]->name = \APPLI\M\Produit::getInstance()->getProduitNameById($result[$i]->produit_id);
        }*/
         
-        
         return $result;
     }   
     

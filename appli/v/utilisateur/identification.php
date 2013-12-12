@@ -70,15 +70,7 @@
 
                     </div>
                 </div><!-- /.row -->
-
-
-
-
-
-
-
             </div><!-- /#page-wrapper -->
-
         </div><!-- /#wrapper -->
 
         <!-- Bootstrap core JavaScript -->
