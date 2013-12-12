@@ -15,8 +15,17 @@ class Produit extends \MVC\Modele {
         return $result[0][0];
     }
     
-    public function getAllProduit($order = "id")
+    
+    public function getProduitNameById($id)
     {
-        return \APPLI\M\Produit::getInstance()->getAll($order);
+        $query = 'select name from ' . $this->getTableName();
+        $query .='where '.$this->getPrimaryKey().' = ?';
+        $queryPrepare = $this->pdo()->prepare($query);
+        $queryPrepare->execute(array($id));
+        $result = $queryPrepare->fetchAll();
+        
+        var_dump($result);
+        
+        return $result;
     }
 }

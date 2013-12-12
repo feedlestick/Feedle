@@ -13,7 +13,7 @@ class Utilisateur extends \MVC\Controleur{
     
     static function data_tableaudebord_mouvements()
     {
-        //self::getVue()->mouvement_liste = \APPLI\M\Mouvement::getInstance()->getMouvementsBetween("date_mvt", 0, 10);
+        self::getVue()->mouvement_liste = \APPLI\M\Mouvement::getInstance()->getMouvementsBetween(0, 10, "date_mvt");
     }
     
     /* COMPTE */

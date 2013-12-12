@@ -89,7 +89,6 @@
            page++;
            $('#loader-scroll').show();
            ajax($('#table_rows'),{c:'Mouvement',a:'data_liste', p:page}, false, true);
-           $(window).unbind('scrollTop');
         }
     });
     
