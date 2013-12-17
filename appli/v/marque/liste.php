@@ -1,10 +1,10 @@
 <div class ="row">
     <div class="col-lg-12">
         <h1 class="page-header">Marques <small><span class="label label-danger"><?php echo $this->marque_count; ?></span></small></h1>
-        <ol class="breadcrumb">
-            <li><a href="#" onclick="ajax($('#page-content'),{c:'Utilisateur',a:'tableaudebord_content'}, true, true)">Tableau de bord</a></li>
+        <ul class="breadcrumb">
+            <li><a href="#" onclik="ajax($('#page-content'),{c:'Utilisateur',a:'tableaudebord_content'}, true, true)">Tableau de bord</a></li>
             <li class="active">Marques</li>
-        </oll>
+        </ul>
     </div>
 </div>
 

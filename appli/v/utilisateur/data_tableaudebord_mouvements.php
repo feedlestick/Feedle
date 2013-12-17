@@ -8,4 +8,6 @@
     
     $('#data_mouvement').show();
     $('#loader_mouvement').hide();
+    
+    $("table").tablesorter({debug: true}); //TableSorter
 </script>

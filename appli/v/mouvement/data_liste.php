@@ -16,5 +16,7 @@
     $('#loader-scroll').hide();
     $('#data').show();
     $('#loader').hide();
+    
+    $("table").tablesorter({debug: true}); //TableSorter
 </script>
 

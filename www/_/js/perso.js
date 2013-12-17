@@ -39,7 +39,7 @@ var Mouvement = function(){};
         switch(type)
         {
             case '0': return "success"; break; 
-            case '1': return "warning";  break;
+            case '1': return "danger";  break;
             default : return "error"; break;
         }
 };
