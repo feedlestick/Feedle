@@ -10,7 +10,7 @@ class Utilisateur extends \MVC\Controleur {
 
     static function tableauDeBord_Content() {
         self::getVue()->username = \Install\App::$utilisateur->email;
-        self::getVue()->produit_in_db = \APPLI\M\Produit::getInstance()->countRows();
+        self::getVue()->produit_count = \APPLI\M\Produit::getInstance()->countRows();
         self::getVue()->produit_stock = \APPLI\M\Produit::getInstance()->getNbProduitEnStock();
     }
 

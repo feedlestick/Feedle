@@ -55,8 +55,8 @@
             <div class="panel-body">
                 <div class="list-group">
                     <a class="list-group-item" href="#"><i class="fa fa-user"></i> Bienvenue <?php echo $this->username ?></a>
-                    <a class="list-group-item" href="#"><i class="fa fa-truck"></i> <?php echo $this->produit_in_db; ?> produits enregistrés</a>
-                    <a class="list-group-item" href="#"><i class="fa fa-truck"></i> <?php echo $this->produit_stock; ?>  produits en stock</a>
+                    <a class="list-group-item" href="#"><i class="fa fa-truck"></i> <span class="label label-info"><?php echo $this->produit_count; ?></span> produits enregistrés</a>
+                    <a class="list-group-item" href="#"><i class="fa fa-truck"></i> <span class="label label-info"><?php echo $this->produit_stock; ?></span>  produits en stock</a>
                 </div>
             </div>
         </div>

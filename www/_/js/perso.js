@@ -17,7 +17,7 @@ function ajax($contenant, data, replace, async) {
         dataType: 'html'
     });
     
-    $localstorage = localStorageHelper();
+    $localstorage = localStorageHelper(); //LocalStorageHelper
 }
 
 

@@ -1,6 +1,6 @@
 <div class ="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Liste des mouvements</h1>
+        <h1 class="page-header">Mouvements <small><span class="label label-danger"><?php echo $this->mouvement_count; ?></span></small></h1>
     </div>
 </div>
 

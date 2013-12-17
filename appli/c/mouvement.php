@@ -5,7 +5,7 @@ namespace APPLI\C;
 class Mouvement extends \MVC\Controleur {
 
     static function liste() {
-        
+         self::getVue()->mouvement_count = \APPLI\M\Mouvement::getInstance()->countRows();
     }
 
     static function data_liste() {
@@ -14,9 +14,4 @@ class Mouvement extends \MVC\Controleur {
         self::getVue()->liste = $mouvements;
         self::getVue()->page = \MVC\A::post('p', 1);
     }
-
-    static function mouvement() {
-        
-    }
-
 }
