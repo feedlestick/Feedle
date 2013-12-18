@@ -10,7 +10,10 @@ function ajax($contenant, data, replace, async) {
         async: async,
         success: function(html) {
             if(replace)
-                $contenant.html(html);
+            {
+                $contenant.fadeOut("fast" , function(){ $contenant.html(html);});
+                $contenant.fadeIn("fast");
+            }
             else
                 $contenant.append(html);
         },
