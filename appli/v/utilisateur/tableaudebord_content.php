@@ -17,10 +17,10 @@
             <div id="loader_mouvement">
                 <h4>Chargement ...</h4>
                 <div class="progress progress-striped active">
-                    <div class="progress-bar progress-bar-success" style="width: 100%"></div>
+                    <div class="progress-bar progress-bar-info" style="width: 100%"></div>
                 </div>
             </div>
-              <div class="table table-responsive" id="data_mouvement">
+              <div class="table table-responsive" id="data_mouvement" hidden>
                    <table class="table table-bordered table-hover table-striped tablesorter">
                         <thead>
                             <tr>
@@ -45,7 +45,7 @@
     </div>
     <div class="col-lg-6"> <!-- RIGHT -->
           <div class="form-group input-group">
-              <span class="input-group-addon">Recherche de produit:</span>
+              <span class="input-group-addon">Recherche :</span>
               <input class="form-control" type="text"></input>
               <span class="input-group-btn">
                   <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>

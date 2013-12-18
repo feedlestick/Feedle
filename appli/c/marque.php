@@ -11,6 +11,8 @@ class Marque extends \MVC\Controleur {
     
     static function item()
     {
-        
+        $marque_id = \MVC\A::post("id", 0);
+        self::getVue()->marque_id = $marque_id;
+        self::getVue()->marque_name = \APPLI\M\Marque::getInstance()->getName($marque_id);
     }
 }

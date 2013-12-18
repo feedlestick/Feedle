@@ -28,4 +28,14 @@ class Produit extends \MVC\Modele {
         
         return $result;
     }
+    
+    public function getProduitByMarqueId($id)
+    {
+        return $this->where("marque_id=?", array($id));
+    }
+    
+    public function getProduitByTypeId($id)
+    {
+        return $this->where("type_id=?", array($id));
+    }
 }

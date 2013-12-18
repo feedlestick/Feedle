@@ -1,15 +1,5 @@
-<div class ="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">Marques <small><span class="label label-danger"><?php echo $this->marque_count; ?></span></small></h1>
-        <ul class="breadcrumb">
-            <li><a href="#" onclik="ajax($('#page-content'),{c:'Utilisateur',a:'tableaudebord_content'}, true, true)">Tableau de bord</a></li>
-            <li class="active">Marques</li>
-        </ul>
-    </div>
-</div>
-
 <!-- Contenue -->
-<div id="marque">
+<div id="type">
       <!-- Pagination -->
       <div class="row text-center">
          <div class="col-lg-12">
@@ -52,7 +42,7 @@
 </div>
 
 <script>
-var marques = <?php echo json_encode($this->marques); ?>;
+var types = <?php echo json_encode($this->types); ?>;
 
  var paginationTopOptions = {
     name: "paginationTop",
@@ -68,7 +58,7 @@ var marques = <?php echo json_encode($this->marques); ?>;
     right: 4
  };
 
-var onclick = "ajax($(\'#page-content\'),{c:\'Marque\',a:\'item\', id:$(this).children(\'span\').filter(\'.id\').text()}, true, true)";
+var onclick = "ajax($(\'#page-content\'),{c:\'Type\',a:\'item\', id:$(this).children(\'span\').filter(\'.id\').text()}, true, true)";
 
 var options = {
   valueNames: [ 'id', 'libelle' ],
@@ -85,5 +75,5 @@ var options = {
 };
 
 
-var marqueList = new List('marque', options, marques);
+var typeList = new List('type', options, types);
 </script>

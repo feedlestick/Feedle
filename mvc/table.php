@@ -168,8 +168,11 @@ abstract class Table {
         $queryPrepare->execute($params);
 
         $result = $queryPrepare->fetchAll(\PDO::FETCH_ASSOC);
-        $rows = array();
+        $rows = null;
         $nb_result = sizeof($result);
+        
+        if($nb_result > 0)
+            $rows = array();
         
         for($i=0; $i<$nb_result; $i++)
         {

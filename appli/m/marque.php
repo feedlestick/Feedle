@@ -5,7 +5,7 @@ class Marque extends \MVC\Modele {
     protected $_tableName='marque';
     protected $_tableRow='\APPLI\M\MarqueRow';
     
-     public function getNbMarque()
+    public function getNbMarque()
     {
         $query = 'select sum(quantity) from ' . $this->getTableName(); //Peut être a adapter en fonction des SGBDR
         $queryPrepare = $this->pdo()->prepare($query);
@@ -13,5 +13,11 @@ class Marque extends \MVC\Modele {
         $result = $queryPrepare->fetchAll();
        
         return $result[0][0];
+    }
+    
+    public function getName($id)
+    {
+        $result = $this->where("id=?", array($id));
+        return $result[0]->libelle;
     }
 }
