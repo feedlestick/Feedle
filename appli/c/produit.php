@@ -33,5 +33,14 @@ class Produit extends \MVC\Controleur {
     static function item()
     {
         $id = \MVC\A::post("id", 1);
+        $produit = \APPLI\M\Produit::getInstance()->get($id);
+        
+        if($produit != null)
+        {
+            self::getVue()->marque_str = \APPLI\M\Marque::getInstance()->getName($produit->marque_id);
+            self::getVue()->type_str = \APPLI\M\Type::getInstance()->getName($produit->type_id);
+        }
+        
+        self::getVue()->produit = $produit;
     }
 }

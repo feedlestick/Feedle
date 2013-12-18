@@ -49,7 +49,6 @@ abstract class Modele {
      */
     public function newItem() { 
         return $this->_table->newItem(); 
-        
     }
     
     /*
@@ -57,6 +56,11 @@ abstract class Modele {
      */
     public function countRows(){
         return $this->_table->countRows();
+    }
+    
+    public function get($id, $reload=false)
+    {
+        return $this->_table->get($id, $reload);
     }
     
     /*

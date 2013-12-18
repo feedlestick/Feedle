@@ -49,8 +49,6 @@ var html_template = '<div class="col-lg-4"><div class="panel panel-default">\n\
                                  <p><strong>Référence :</strong> PROD-<span class="id"></span></p>\n\
                             </div>\n\
                             <div class="panel-footer">\n\
-                                <a href="#" class="label label-success">Commander</a>\n\
-                                <a href="#" class="label label-danger">Sortie</a>\n\
                                 <a href="#" onclick="ajax($(\'#page-content\'),{c:\'Produit\',a:\'item\'}, true, true)" class="label label-info">Voir fiche produit</a>\n\
                             </div>\n\
                          </div></div>';
